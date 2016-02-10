@@ -25,18 +25,18 @@ if File::exist?('/usr/local/bin/ruby')
 else
   remote_file 'ruby-2.0.0-p247' do
       source 'http://s3-ap-southeast-1.amazonaws.com/st-back-up/ruby-2.0.0-p247.tar.gz'
-      path '/home/vagrant/ruby'    # Will be created if missing
+      path '/path/to/dir/ruby'    # Will be created if missing
   end
 
     bash 'extract' do
-      cwd '/home/vagrant/'
+      cwd '/path/to/dir/'
       code <<-EOH
       tar -xvf ruby
       EOH
     end
 
     bash 'ruby' do
-      cwd '/home/vagrant/ruby-2.0.0-p247'
+      cwd '/path/to/dir/ruby-2.0.0-p247'
       code <<-EOH
       ./configure
         make
